@@ -1,0 +1,81 @@
+﻿<Window x:Class="Murzilla.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Murzilla"
+        xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+        xmlns:tb="http://www.hardcodet.net/taskbar"
+        mc:Ignorable="d"
+        Title="Murzilla" Height="720" Width="1280" Icon="/icon.ico">
+    <DockPanel>
+        <DockPanel DockPanel.Dock="Bottom">
+            <tb:TaskbarIcon IconSource="icon.ico" ToolTipText="Murzilla" Visibility="Visible" MenuActivation="LeftOrRightClick">
+                <tb:TaskbarIcon.ContextMenu>
+                <ContextMenu>
+                        <MenuItem Header="Open" Click="Open_OnClick" />
+                        <MenuItem Header="Hide" Click="Hide_OnClick" />
+                </ContextMenu>
+                </tb:TaskbarIcon.ContextMenu>
+            </tb:TaskbarIcon>
+            <TextBox Name = "statusBar" Text="Murzilla v.0.0.1" />
+        </DockPanel>
+        <DockPanel DockPanel.Dock="Top">
+            <TextBox Name = "titleBar" />
+        </DockPanel>
+        <DockPanel DockPanel.Dock="Top">
+            <Button x:Name="ButtonGo" DockPanel.Dock="Right" Click="ButtonGo_Click" Content="Go"/>
+            <Button x:Name="ButtonBack" DockPanel.Dock="Left" Click="ButtonBack_Click" Content="&lt;"/>
+            <Button x:Name="ButtonReload" DockPanel.Dock="Left" Click="ButtonReload_Click" Content="@"/>
+            <Button x:Name="ButtonForward" DockPanel.Dock="Left" Click="ButtonForward_Click" Content="&gt;"/>
+            <TextBox Name = "addressBar" KeyDown="AddressBar_KeyDown"/>
+        </DockPanel>
+        <DockPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="240"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition Width="80"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Row="0" Grid.Column="0" x:Name="Home" Click="ButtonHome_Click" Content="Home" />
+                        <Button Grid.Row="0" Grid.Column="1" x:Name="Source" Click="ButtonSource_Click" Content="Source" />
+                        <Button Grid.Row="0" Grid.Column="2" x:Name="OpenInBrowser" Click="ButtonOpenInBrowser_Click" Content="InBrowser" />
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition Width="80"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Row="1" Grid.Column="0" x:Name="SaveButton" Click="SaveButton_Click" Content="Save" />
+                        <Button Grid.Row="1" Grid.Column="1" x:Name="SearchButton" Click="SearchButton_Click" Content="Search" />
+                        <Button Grid.Row="1" Grid.Column="2" x:Name="Three" Click="ButtonOpenInBrowser_Click" Content="Three" />
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <TextBlock Text="OK" />
+                    </Grid>
+                    <Grid Grid.Row="3" DataContext="{Binding Products}">
+                        <DataGrid Name="dbList" ItemsSource="{Binding}"
+                            MouseDoubleClick="DataGrid_MouseDoubleClick"
+                            AutoGenerateColumns="True" />
+                    </Grid>
+                </Grid>
+                <wv2:WebView2 Name="webView" Grid.Column="1"
+                    Source="https://google.com"
+                />
+            </Grid>
+        </DockPanel>
+    </DockPanel>
+</Window>
