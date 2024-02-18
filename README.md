@@ -14,8 +14,8 @@ x86_64; Windows 11; 2 Core; 4 GB RAM; 60GB SSD; 10 Mbit WAN
 ## Installation
 
 1. Download latest release https://github.com/bitcoren/murwin/releases
-2. unzip murwin.zip
-3. run murwin\assets\install.cmd
+2. unzip murzilla.zip
+3. run murzilla\assets\install.cmd
 4. System will reboot
 
 ## UnInstall
