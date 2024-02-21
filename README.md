@@ -1,6 +1,6 @@
 # Murzilla
 
-Murzilla - journal of titles for Windows / Мурзилла - журнал заголовков для Windows  
+Murzilla - long-term storage journal Windows edition / Мурзилла - журнал длительного хранения Windows версия  
 
 Warning:  
 This is alpha software. Use at your own discretion!  
